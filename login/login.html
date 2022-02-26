@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            /* margin: 100px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 50px;
+
+        }
+        .container {
+            width: 800px;
+            height: 600px;
+            border: 2px solid skyblue;
+            box-sizing: border-box;;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+
+        .doIt {
+            width: 750px;
+            height: 50px;
+            border: 2px solid black;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row-reverse;
+            list-style: none;
+        }
+
+        .doIt ul li {
+            margin-right: 20px;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        h3 {
+            color: greenyellow;
+        }
+
+        .container h3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #login, #home {
+            cursor: pointer;
+        }
+
+        .email {
+            margin-top: 20px;
+            /* display: flex; */
+        }
+
+        .inp {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="doIt">
+            <ul>
+                <li>Signup</li>
+                <li id="login">Login</li>
+                <li id="home">Home</li>
+            </ul>
+        </div>
+
+        <div class="email">
+            <div class="inp">
+                Email: &ensp; &ensp;
+                <input type="email" name="email" id="gogo"><br>
+            </div>
+            
+            <div class="inp">
+                Password:
+                <input type="password" name="Password" id="pass">
+            </div>
+
+            <div class="inp">
+                <input type="submit" value="Login" onclick="loggedIn()">
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // var home = document.getElementById("home");
+        // var login = document.getElementById("login");
+        // home.addEventListener("click", goToHome);
+        
+        // function goToHome(){
+        //     window.location = "index.html";
+        // }
+    
+
+        function loggedIn(){
+
+            let id = "manishhansalmeh@gmail.com";
+            let pd = "12345";
+
+            var say = document.getElementById("gogo").value;
+            var passwordInput = document.getElementById("pass").value;
+
+            if(say===id && passwordInput===pd){
+                window.location = "index.html";
+            }
+
+            else if(say!==id || passwordInput!==pd){
+                alert('Invalid Credentials' );
+            }
+        }
+
+    </script>
+</body>
+</html>

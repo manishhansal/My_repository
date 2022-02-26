@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            font-family: sans-serif;
+            text-align: center;
+            font-weight: lighter;
+            margin-top: 50px;
+        }
+
+        #first, #one, #two, #three, #four, #five, #six {
+            margin-top: 5%;
+            margin-left: 1%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #one div:nth-child(7), #two div:nth-child(7), #three div:nth-child(7), #four div:nth-child(7), #five div:nth-child(7), #six div:nth-child(7) {
+            background-color: rgb(109,83,94);
+        }
+
+        #one div:nth-child(2), #two div:nth-child(3), #two div:nth-child(4), #three div:nth-child(4), #three div:nth-child(5), #four div:nth-child(5), #four div:nth-child(6) {
+            background-color: rgb(170,0,135);
+        }
+
+        #one div:nth-child(3), #one div:nth-child(4), #one div:nth-child(5), #one div:nth-child(6), #two div:nth-child(5), #two div:nth-child(6), #three div:nth-child(6) {
+            background-color: rgb(255,102,0);
+        }
+        .boxFive {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(255,0,102);
+            border: 2px solid black;
+            margin-bottom: 20px;
+            border-radius: 2px;
+            box-sizing: border-box;
+            margin-top: 1.5px;
+            
+        }
+
+        .boxSix {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(255,204,0);
+            border: 2px solid black;
+            margin-bottom: 20px;
+            border-radius: 2px;
+            box-sizing: border-box;
+            margin-top: 1.5px;
+            
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            border: 2px solid black;
+            margin-bottom: 20px;
+            border-radius: 2px;
+            box-sizing: border-box;
+            margin-top: 1.5px;
+            
+        }
+
+        .firstBox {
+            width: 50px;
+            height: 50px;
+            background-color: brown;
+            border: 2px solid black;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 100;
+            font-size: 30px;
+            color: white;
+            font-family: sans-serif;
+            border-radius: 2px;
+            box-sizing: border-box;
+            padding-top: 8px;
+        }
+
+        #man {
+            display: flex;
+            margin-top: -271px;
+            margin-left: 100px;
+        }
+
+        .No {
+            background-color: white;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+            border: 2px solid white;
+            border-radius: 2px;
+        }
+
+        .box4 {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(255,85,85);
+            border: 2px solid black;
+            margin-bottom: 21px;
+            text-align: center;
+            font-family: sans-serif;
+            border-radius: 2px;
+            box-sizing: border-box;
+            padding-top: 15px;
+            font-weight: bold;
+        }
+
+        .blue {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border: 2px solid black;
+            margin-bottom: 20px;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+
+        #thirdColumn {
+            display: flex;
+            flex-direction: column;
+            margin-top: 431px;
+            margin-left: 10px;
+            /* position: relative;
+            bottom: 1px; */
+        }
+
+        .UniqueB {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(255,230,213);
+            border: 6px solid black;
+            margin-bottom: 20px;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+
+        #veryUnique {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: rgb(137,160,44);
+            margin-top: 70px;
+            margin-left: 300px;
+            position: relative;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+
+        #second, #third {
+            display: flex;
+        }
+
+        .bottomRows {
+            margin-left: 400px; 
+            margin-top: 30px;
+        }
+
+        .box2 {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(71,88,46);
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+        .box3 {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(149,188,95);
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        .secondBox {
+            font-weight: 100;
+            color: white;
+            text-align: center;
+            font-family: sans-serif;
+            width: 50px;
+            height: 50px;
+            background-color: rgb(71,88,46);
+            border: 1px solid black;
+            font-size: 25px;
+            padding-top: 8px;
+            padding-right: 2px;
+            padding-bottom: 2px;
+            padding-left: 2px;
+            box-sizing: border-box;
+        }
+
+        #third div:nth-child(7) {
+            font-size: 20px;
+            font-family: sans-serif;
+            padding-top: 10px;
+            padding-left: 6px;
+
+        }
+
+        #third div:nth-child(14) {
+            font-size: 20px;
+            font-weight: 100;
+            font-family: sans-serif;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+
+        .fourteen {
+            font-size: 20px;
+            padding-left: 160px;
+            padding-top: 15px;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+
+        .si {
+            font-weight: 100;
+            font-family: sans-serif;
+            font-size: 60px;
+            padding-top: 40px;
+            padding-left: 10px;
+        }
+
+        .silicon {
+            font-weight: 100;
+            font-family: sans-serif;
+            font-size: 30px;
+            padding-top: 5px;
+            padding-left: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>THE PERIODIC TABLE OF ELEMENTS</h1>
+
+    <div id="veryUnique">
+        <div class="fourteen">14</div>
+        <div class="si">Si</div>
+        <div class="silicon">Silicon</div>
+    </div>
+
+    <div id="man">
+
+        <!-- First Column -->
+
+        <div id="first">
+            <div class="firstBox">H</div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+
+        <!-- Second Column -->
+
+        <div id="first">
+            <div class="No"></div>
+            <div class="box4">4</div>
+            <div class="box4">12</div>
+            <div class="box4">20</div>
+            <div class="box4">38</div>
+            <div class="box4">56</div>
+            <div class="box4">88</div>
+        </div>
+
+        <!-- Third Column -->
+        <div id="thirdColumn">
+            <!-- <div class="firstBox">H</div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div> -->
+            <div class="UniqueB"></div>
+            <div class="UniqueB"></div>
+        </div>
+
+        <!-- Fourth Column -->
+        
+
+        <div id="first">
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="first">
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="No"></div>
+            <!-- <div id="veryUnique"></div> -->
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="first">
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="first">
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="first">
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="first">
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="first">
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="first">
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="first">
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="No"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+
+        <!-- Blue box ends -->
+
+
+        <div id="one">
+            <div class="No"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div id="two">
+            <div class="No"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div id="three">
+            <div class="No"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div id="four">
+            <div class="No"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+        <div id="five">
+            <div class="No"></div>
+            <div class="boxFive"></div>
+            <div class="boxFive"></div>
+            <div class="boxFive"></div>
+            <div class="boxFive"></div>
+            <div class="boxFive"></div>
+            <div class="boxFive"></div>
+        </div>
+        <div id="six">
+            <div class="boxSix"></div>
+            <div class="boxSix"></div>
+            <div class="boxSix"></div>
+            <div class="boxSix"></div>
+            <div class="boxSix"></div>
+            <div class="boxSix"></div>
+            <div class="boxSix"></div>
+        </div>
+    </div>
+ 
+    <!-- Bottom rows (completed) -->
+
+    <div class="bottomRows">
+        <div id="second">
+            <div class="secondBox">La</div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+            <div class="box2"></div>
+        </div>
+        <div id="third">
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3">Am</div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3">No</div>
+        </div>
+    </div>
+</body>
+</html>

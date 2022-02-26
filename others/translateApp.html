@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translate App</title>
+    <style>
+        #container {
+            display: flex;
+            min-height: 500px;
+        }
+
+        #inputSection,
+        #outputSection {
+            flex: 1;
+            border: 1px solid #cecece;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        #inputText {
+            height: 80%;
+            width: 95%;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="inputSection">
+            <button onclick="translateText()">Translate</button>
+            <textarea id="inputText"></textarea>
+        </div>
+
+        <div id="outputSection">
+            <p id="translatedText">
+
+            </p>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        let url = `https://libretranslate.de/translate`;
+
+        async function translateText() {
+            try {
+                let input = document.getElementById("inputText").value;
+                let res = await fetch(url, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        q: input,
+                        source: "en",
+                        target: "hi",
+                        format: "text",
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+                let data = await res.json();
+                console.log(data);
+                let translatedTextP = document.getElementById("translatedText");
+                
+                displayData(data, translatedTextP);
+            } catch (err) {
+                console.log(err);
+                
+            }
+        }
+
+        function displayData(data, parent) {
+            parent.textContent = data.translatedText;
+        }
+
+        
+    </script>
+</body>
+</html>

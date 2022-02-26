@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: bisque;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            margin-top: 5%;
+            margin-left: 5%;
+            margin-right: 5%;
+
+            grid-gap: 20px;
+        }
+
+        #container > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #cecece;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+        #container1 {
+            margin-left: 500px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <input type="text" placeholder="Search" id="inputContent">
+        <button onclick="searchNow()">Search</button>
+    </nav>
+    <div id="container1"></div>
+    <div id="container"></div>
+
+    <script>
+
+        function searchNow(){
+            let inputData = document.getElementById("inputContent").value;
+            console.log(inputData);
+            let url = `http://www.omdbapi.com/?apikey=d428c59c&s=${inputData}`
+            async function movieData(){
+                try {
+                    let res = await fetch(url);
+                    let data = await res.json();
+                    console.log(data);
+                    displayData(data);
+                }
+                catch(err) {
+                    console.log(err);
+                }
+            }
+
+            movieData()
+        }
+        // movieData()
+        
+        function displayData(data) {
+            document.getElementById("container").textContent = "";
+            document.getElementById("container1").textContent = "";
+            if(data["Response"]==="False"){
+                let cont1 = document.getElementById("container1");
+                let img = document.createElement("img");
+                img.src = "https://media3.giphy.com/media/14uQ3cOFteDaU/giphy.gif?cid=ecf05e47idv7cbpv4n8vzbhzh61xn4ghxh5ps9dll6pc5wa8&rid=giphy.gif&ct=g";
+                cont1.append(img);
+            }
+            else {
+                data.Search.forEach(function (movieContent) {
+                let newsDiv = document.createElement("div");
+
+                let img = document.createElement("img");
+                img.src = movieContent.Poster;
+
+                let titleP = document.createElement("p");
+                titleP.textContent = movieContent.Title;
+
+                let releaseDate = document.createElement("p");
+                releaseDate.textContent = movieContent.Year;
+
+                newsDiv.append(img, titleP, releaseDate);
+                container.append(newsDiv);
+            })
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<style>
+    body{
+        margin: 0
+    }
+
+    button,select{
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    #navbar{
+        background-color: #cecece;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 20px;
+    }
+
+    #navbar > *{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 20px;
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    #container > div{
+        padding: 10px;
+        border: 1px solid #cecece;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    img{
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    #cart-count{
+        color: red;
+    }
+</style>
+<body>
+    <div id="navbar">
+        <div id="cart-count"></div>
+        <a href="cart.html">Cart Page</a>
+    </div>
+    <div id="sort-filter">
+        <select name="sort" id="sortButton" onchange="sortProducts()">
+            <option value = "">SORT</option>
+            <option value = "asc">LOW TO HIGH</option>
+            <option value = "desc">HIGH TO LOW</option>
+        </select>
+        <select name="filter" id="filterButton" onchange="filterProducts()">
+            <option value = "">FILTER</option>
+            <option value = "0-50">0-50</option>
+            <option value = "51-150">51-150</option>
+            <option value = ">150">GREATER THAN 150</option>
+        </select>
+    </div>
+    <hr />
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    let container = document.getElementById("container");
+    let cartCount = document.getElementById("cart-count");
+
+    let sortButton = document.getElementById("sortButton");
+    let filterButton = document.getElementById("filterButton");
+
+    let url = `https://fakestoreapi.com/products`;
+
+    if(localStorage.getItem("products") === null){
+        localStorage.setItem("products", JSON.stringify([]));
+    }
+
+    if(localStorage.getItem("cart") === null){
+        localStorage.setItem("cart", JSON.stringify([]));
+    }
+
+    updateCartCount(JSON.parse(localStorage.getItem("cart")));
+
+    updateDOM();
+
+    async function updateDOM(){
+        try {
+            let productsList;
+
+            if(JSON.parse(localStorage.getItem("products")).length>0){
+                productsList = JSON.parse(localStorage.getItem("products"));
+            } else{
+                productsList = await fetchProucts();
+                localStorage.setItem("products",JSON.stringify(productsList));
+            }
+
+            renderProducts(productsList);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function fetchProucts(){
+        try {
+            let res = await fetch(url);
+            let data = await res.json();
+            return data;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    function updateCartCount(cart){
+        cartCount.textContent = cart.length;
+    }
+
+    function filterProducts(){
+        let filterCriteria = filterButton.value;
+        let sortCriteria = sortButton.value;
+        let productsList = JSON.parse(localStorage.getItem("products"));
+
+        let updatedProductList = productsList.filter((prod)=>{
+            if (filterCriteria === "0-50"){
+                return prod.price <= 50
+            }
+            else if(filterCriteria === "51-150"){
+                return prod.price > 50 && prod.price<=150;
+            }
+            else if(filterCriteria === ">150"){
+                return prod.price >150
+            }
+            else{
+                return true;
+            }
+        })
+        .sort((prodA,prodB) =>{
+            if(sortCriteria === "asc"){
+                return prodA.price - prodB.price;
+            }
+            else if(sortCriteria === "desc"){
+                return prodB.price - prodA.price;
+            }
+        });
+        renderProducts(updatedProductList);
+    }
+
+
+    function sortProducts(){
+        let filterCriteria = filterButton.value;
+        let sortCriteria = sortButton.value;
+        let productsList = JSON.parse(localStorage.getItem("products"));
+
+        let updatedProductList = productsList.sort((prod)=>{
+            if (filterCriteria === "0-50"){
+                return prod.price <= 50
+            }
+            else if(filterCriteria === "51-150"){
+                return prod.price > 50 && prod.price<=150;
+            }
+            else if(filterCriteria === ">150"){
+                return prod.price >150
+            }
+            else{
+                return true;
+            }
+        })
+        .sort((prodA,prodB) =>{
+            if(sortCriteria === "asc"){
+                return prodA.price - prodB.price;
+            }
+            else if(sortCriteria === "desc"){
+                return prodB.price - prodA.price;
+            }
+        });
+        renderProducts(updatedProductList);
+    }
+
+    function renderProducts(productsData){
+        container.innerHTML="";
+
+        productsData.forEach((prod) =>{
+            let prodCard = document.createElement("div");
+
+            let image = document.createElement("img");
+            image.src = prod.image;
+
+            let name = document.createElement("img");
+            name.textContent = prod.title;
+
+            let price = document.createElement("p");
+            price.textContent =`INR : ${prod.price}`;
+
+            let addToCartButton = document.createElement("button");
+            addToCartButton.textContent =`ADD TO CART`;
+            addToCartButton.onclick = function (){
+                addToCart(prod);
+            };
+
+            prodCard.append(image,name,price,addToCartButton);
+            container.append(prodCard);
+        })
+    }
+
+    function addToCart(prod){
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        let checkIfProductExists = cart.find((cartItem) => cartItem.id === prod.id);
+
+        if(checkIfProductExists){
+            alert (`Item has been already added to the cart`);
+        }
+        else{
+            cart.push(prod);
+
+            localStorage.setItem("cart",JSON.stringify(cart));
+            updateCartCount(JSON.parse(localStorage.getItem("cart")));
+        }
+    }
+</script>

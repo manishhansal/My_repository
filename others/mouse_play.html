@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 500px;
+            height: 500px;
+            border-radius: 10px;
+            background-color: rgb(76,155,216);
+            box-sizing: border-box;
+            padding: 400px 0px 10px 300px;
+        }
+
+        #demo {
+            width: 150px;
+            height: 50px;
+            background-color: rgb(177,71,57);
+            border-radius: 5px;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        /* #submitBtn:hover {
+            background-color: rgb(90,166,95);
+        } */
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="demo">Submit</div>
+    </div>
+
+    <script>
+
+        document.getElementById("container").addEventListener("mouseenter", mouseEnter);
+        document.getElementById("container").addEventListener("mouseleave", mouseLeave);
+
+        function mouseEnter() {
+            document.getElementById("demo").style.backgroundColor = "green";
+        }
+
+        function mouseLeave() {
+            document.getElementById("demo").style.backgroundColor = "rgb(177,71,57)";
+        }  
+          
+    </script>
+</body>
+</html>

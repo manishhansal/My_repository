@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #containerDiv {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            margin-top: 5%;
+            margin-left: 5%;
+            margin-right: 5%;
+
+            grid-gap: 20px;
+        }
+
+        #containerDiv > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #cecece;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+        #slides {
+            margin-left: 150px;
+            width: 80%;
+            height: 500px;
+            box-sizing: border-box;
+            margin-bottom: 50px;
+            
+        }
+
+        #slides > img {
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="slides">
+        <h1>Trending Movies</h1>
+        <img name="slideShow"/>
+    </div>
+    <div id="containerDiv">
+
+    </div>
+
+    
+    <script>
+
+        let url = `https://api.themoviedb.org/3/trending/movie/week?api_key=73e568fd3ab9ed1fe04522c443d6e4ae`;
+
+        async function getData() {
+            try {
+                let res = await fetch(url);
+                let data = await res.json();
+                console.log(data);
+                displayData(data);
+            } catch (error) {
+                console.log(error);
+                
+            }
+        }
+        getData()
+
+        let store = new Array();
+
+        function displayData(data) {
+            data.results.forEach(element => {
+
+                let container = document.getElementById("containerDiv");
+
+                let div = document.createElement("div");
+
+                let poster = document.createElement("img");
+                poster.src = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${element.poster_path}`;
+
+                let moviePoster = `https://www.themoviedb.org/t/p/w600_and_h900_bestv2${element.poster_path}`;
+                store.push(moviePoster);
+
+                let title = document.createElement("p");
+                title.textContent = element.original_title;
+
+                div.append(poster, title);
+                container.append(div);
+            });
+        }
+        // console.log(store)
+        var i = 0;
+        function slideShowEffect(){
+
+            document.slideShow.src = store[i];
+
+            if(i < store.length-1){
+                i++
+            }
+            else{
+                i=0;
+            }
+
+            setTimeout("slideShowEffect()" , 3000);
+
+        }
+
+        window.onload = slideShowEffect;
+
+        
+
+    </script>
+</body>
+</html>

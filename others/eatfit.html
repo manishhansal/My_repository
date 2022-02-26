@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            background-color: black;
+        }
+
+        .container {
+            background-color: rgb(50,47,48);
+            margin-left: 450px;
+            margin-top: 100px;
+            margin-bottom: 60px;
+            color: white;
+            text-align: center;
+            font-size: 25px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 50px;
+            width: 600px;
+        }
+
+        .line {
+            background-color: white;
+            width: 50px;
+            height:5px;
+            margin-left: 280px;
+            margin-top: 20px;
+            border-radius: 50px;
+        }
+
+        .btn {
+            border-color: rgb(255,0,108);
+            background-color: rgb(255,0,108);
+            border: 1px solid rgb(255,0,108);
+            text-align: center;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            height: 50px;
+            padding-bottom: 17px;
+        }
+
+        .container h2, .mid {
+            color: rgb(255,0,108);
+            font-size: 30px;
+            margin-top: -10px;
+        }
+
+        .top {
+            margin-top: -20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <button class="create" onclick="createPage()">Create Page</button>
+    </div>
+    
+
+
+
+    <script>
+        var mainDiv = document.querySelector(".container");
+
+        function createPage(){
+            var head1 = document.createElement("h3");
+            head1.innerText = "Today Sun, 26th Apr"
+
+            var head1A = document.createElement("h3");
+            head1A.innerText = "Schedule - 7:00 Am onwards"
+            head1A.className = "top"
+
+            var para1 = document.createElement("p");
+            para1.innerText = "Parathe Sharathe with"
+
+            var head2 = document.createElement("h2");
+            head2.innerText = "Chef Archna Doshi"
+
+            var div = document.createElement("div");
+            div.className = "line";
+
+            var para2 = document.createElement("p");
+            para2.innerText = "Spices and Immunity with";
+
+            var head4 = document.createElement("h3");
+            head4.innerText = "Nutrition Expert Manasa Ranjan";
+            head4.className = "mid"
+
+            var div2 = document.createElement("div");
+            div2.className = "line";
+
+            var para3 = document.createElement("p");
+            para3.innerText = "Postman Vegetables with"
+
+            var head3 = document.createElement("h2");
+            head3.innerText = "Chef Json D'Souza"
+
+            var div3 = document.createElement("div");
+            div3.className = "btn";
+
+            var head5 = document.createElement("h3");
+            head5.innerText = "SIGN UP NOW"
+            
+
+            mainDiv.append(head1);
+            mainDiv.append(head1A);
+            mainDiv.append(para1);
+            mainDiv.append(head2);
+            mainDiv.append(div);
+            mainDiv.append(para2);
+            mainDiv.append(head4);
+            mainDiv.append(div2);
+            mainDiv.append(para3);
+            mainDiv.append(head3);
+            mainDiv.append(div3);
+            div3.appendChild(head5);
+            // mainDiv.append(head5);
+        }
+    </script>
+</body>
+</html>

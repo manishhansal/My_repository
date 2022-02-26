@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            margin-left: 250px;
+            margin-top: 100px;
+            width: 965px;
+            height: 490px;
+            box-sizing: border-box;
+            padding-top: 15px;
+            border: 1px solid white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        img {
+            width: 1000px;
+            height: 500px;
+            margin-left: -50px;
+            /* margin-top: 50px; */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- <h1>Slide Show</h1> -->
+        <img name="slideShow"/>
+    </div>
+
+    <script>
+
+        var i = 0;
+        var photos = [];
+
+        photos[0] = "https://i.ibb.co/S7MNkJR/looper.jpg";
+        photos[1] = "https://i.ibb.co/kK4cVRd/f9.jpg";
+        photos[2] = "https://i.ibb.co/hYjkW70/london-Has-Fallen-movie.jpg";
+        photos[3] = "https://i.ibb.co/T1NF8Hc/twilight-Saga.jpg";
+        photos[4] = "https://i.ibb.co/KGB41ys/avengers-Endgame-movie.jpg";
+        photos[5] = "https://i.ibb.co/1LJdt11/oblivion-Movie.jpg";
+
+        // var colorsArr = [];
+
+        // colorsArr[0] = "blue";
+        // colorsArr[1] = "green";
+        // colorsArr[2] = "yellow";
+        // colorsArr[3] = "silver";
+        // colorsArr[4] = "red";
+        // colorsArr[5] = "pink";
+        // colorsArr[6] = "white";
+
+        function slideShowEffect(){
+            document.slideShow.src = photos[i];
+
+            if(i < photos.length-1){
+                i++
+            }
+            else{
+                i=0;
+            }
+
+            setTimeout("slideShowEffect()" , 1000);
+        }
+
+       
+
+        // function changeColor(){
+        //     var x = document.getElementById("container");
+        //     x.style.backgroundColor = colorsArr[i];
+
+        //     if(i < colorsArr.length-1){
+        //         i++
+        //     }
+        //     else{
+        //         i=0;
+        //     }
+
+        //     setTimeout("changeColor()" , 1000)
+
+        // }
+
+        // window.onload = changeColor
+        window.onload = slideShowEffect
+
+    </script>
+</body>
+</html>

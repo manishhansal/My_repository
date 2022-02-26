@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: bisque;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            margin-top: 5%;
+            margin-left: 5%;
+            margin-right: 5%;
+
+            grid-gap: 20px;
+        }
+
+        #container > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #cecece;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!-- <input type="text" id="search" placeholder="Search Here"> -->
+        <button id="btn" onclick="seek()">Go To Search Page</button>
+    </div>
+
+    <div id="container">
+
+    </div>
+
+    <script>
+        let container = document.getElementById("container");
+        let apiKey = "b5bc1d7adc844bcd8a5d127647701653";
+        let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=b5bc1d7adc844bcd8a5d127647701653"
+
+        async function newsData() {
+            try {
+                let res = await fetch(url);
+                let data = await res.json();
+                console.log(data);
+                displayData(data);
+            }
+            catch(err) {
+                console.log(err);
+            }
+        }
+
+        newsData(); 
+        function displayData(data) {
+            data.articles.forEach(function (newsContent) {
+                let newsDiv = document.createElement("div");
+
+                let img = document.createElement("img");
+                img.src = newsContent.urlToImage;
+
+                let titleP = document.createElement("p");
+                titleP.textContent = newsContent.title;
+
+                let authorP = document.createElement("p");
+                authorP.textContent = newsContent.author;
+
+                newsDiv.append(img, titleP, authorP);
+                container.append(newsDiv);
+            })
+        }
+
+        var inputData = document.getElementById("search").value;
+        
+        function seek(){
+            window.location = "search.html"
+        }
+    </script>
+</body>
+</html>

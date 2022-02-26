@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+      #slide {
+        margin-left: 5%;
+        margin-top: 5%;
+      }
+
+      #slide > img {
+        width: 1150px;
+        height: 500px;
+      }
+
+       #container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            margin-top: 5%;
+            margin-left: 5%;
+            margin-right: 5%;
+
+            grid-gap: 20px;
+        }
+
+        #container > div {
+            display: flex;
+            flex-direction: column;
+            /* align-items: center;
+            justify-content: center;
+            border: 1px solid #cecece; */
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+        p {
+          font-size: 10px;
+          font-family: sans-serif;
+          font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <div id="slide">
+       <img name="slideShow"/>
+    </div>
+
+    <div id="container">
+
+    </div>
+
+    <script>
+        var i = 0;
+        var photos = [];
+
+        photos[0] = "https://images.fandango.com/ImageRenderer/820/0/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/226538/NightmareAlleyEarlyAccess2021.jpg";
+        photos[1] = "https://images.static-bluray.com/products/20/107961_2_large.jpg";
+        photos[2] = "https://see.news/wp-content/uploads/2022/01/main-ail-61a507ca358256.61567349.jpg";
+        photos[3] = "https://www.vitalthrills.com/wp-content/uploads/2021/07/encanto.jpg.webp";
+        photos[4] = "https://media.vanityfair.com/photos/6102d5be3326e9e8e59be1b5/master/pass/house-of-gucci-posters-tout.jpg";
+        photos[5] = "https://images.thedirect.com/media/photos/spider-man-no-way-home-poster.jpg";
+        photos[6] = "https://m.media-amazon.com/images/M/MV5BNzk0OWQzMDQtODg1ZC00Yjg2LWJjYzAtNGRjMjE2M2FlYjZjXkEyXkFqcGdeQXVyMTMzNzIyNDc1._V1_.jpg";
+        photos[7] = "https://ca-times.brightspotcdn.com/dims4/default/3ba3735/2147483647/strip/true/crop/790x994+0+0/resize/840x1057!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F26%2Fe4%2F349b21f1496dbe319d01cb835a7a%2Fkat-reeders-licorice-pizza-poster.png";
+        photos[8] = "https://prod1.agileticketing.net/images/user/drexel_14105/site_field.jpg";
+
+        function slideShowEffect(){
+            document.slideShow.src = photos[i];
+
+            if(i < photos.length-1){
+                i++
+            }
+            else{
+                i=0;
+            }
+
+            setTimeout("slideShowEffect()" , 2000);
+        }
+
+       
+        window.onload = slideShowEffect
+
+
+
+
+
+        var dataBase = [];
+        dataBase[0] = {"name": "Nightmare Alley",
+                       "releaseDate" : "2021",
+                        "poster" : "https://images.fandango.com/ImageRenderer/820/0/redesign/static/img/default_poster.png/0/images/masterrepository/fandango/226538/NightmareAlleyEarlyAccess2021.jpg",
+                        "IMBDrating" : "7.2",
+                        "Director" : "Guillermo del Toro",
+                        "Stars" : "Bradley Cooper, Cate Blanchett, Toni Collette, Willem Dafoe"
+                      }
+        dataBase[1] = {"name": "The Power of the Dog",
+                       "releaseDate" : "2021",
+                        "poster" : "https://images.static-bluray.com/products/20/107961_2_large.jpg",
+                        "IMBDrating" : "6.9",
+                        "Director" : "Jane Campion",
+                        "Stars" : "Benedict Cumberbatch, Kirsten Dunst, Jesse Plemons, Kodi Smit-McPhee"
+                      }
+        dataBase[2] = {"name": "The King's man",
+                        "releaseDate" : "2021",
+                        "poster" : "https://see.news/wp-content/uploads/2022/01/main-ail-61a507ca358256.61567349.jpg",
+                        "IMBDrating" : "6.5",
+                        "Director" : "Matthew Vaughn",
+                        "Stars" : " Ralph Fiennes, Gemma Arterton, Rhys Ifans, Harris Dickinson"
+                        }
+        dataBase[3] = {"name": "Encanto",
+                       "releaseDate" : "2021",
+                        "poster" : "https://www.vitalthrills.com/wp-content/uploads/2021/07/encanto.jpg.webp",
+                        "IMBDrating" : "7.3",
+                        "Director" : "Jared Bush, Byron Howard, Charise Castro Smith",
+                        "Stars" : "Stephanie Beatriz, María Cecilia Botero, John Leguizamo, Mauro Castillo"
+                      }
+        dataBase[4] = {"name": "House of Gucci",
+                        "releaseDate" : "2021",
+                        "poster" : "https://media.vanityfair.com/photos/6102d5be3326e9e8e59be1b5/master/pass/house-of-gucci-posters-tout.jpg",
+                        "IMBDrating" : "6.7",
+                        "Director" : "Ridley Scott",
+                        "Stars" : " Lady Gaga, Adam Driver, Al Pacino, Jeremy Irons"
+                        }
+        dataBase[5] = {"name": "Spider-Man: No Way Home",
+                        "releaseDate" : "2021",
+                        "poster" : "https://images.thedirect.com/media/photos/spider-man-no-way-home-poster.jpg",
+                        "IMBDrating" : "8.7",
+                        "Director" : "Jon Watts",
+                        "Stars" : " Tom Holland, Zendaya, Benedict Cumberbatch, Jacob Batalon"
+                      }
+        dataBase[6] = {"name": "Don't Look Up",
+                        "releaseDate" : "2021",
+                        "poster" : "https://m.media-amazon.com/images/M/MV5BNzk0OWQzMDQtODg1ZC00Yjg2LWJjYzAtNGRjMjE2M2FlYjZjXkEyXkFqcGdeQXVyMTMzNzIyNDc1._V1_.jpg",
+                        "IMBDrating" : "7.2",
+                        "Director" : "Adam Mckay",
+                        "Stars" : "Leonardo DiCaprio, Jennifer Lawrence, Meryl Streep, Cate Blanchett"
+                        }
+        dataBase[7] = {"name": "Licorice Pizza",
+                        "releaseDate" : "2021",
+                        "poster" : "https://ca-times.brightspotcdn.com/dims4/default/3ba3735/2147483647/strip/true/crop/790x994+0+0/resize/840x1057!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F26%2Fe4%2F349b21f1496dbe319d01cb835a7a%2Fkat-reeders-licorice-pizza-poster.png",
+                        "IMBDrating" : "7.9",
+                        "Director" : "Paul Thomas Anderson",
+                        "Stars" : "Alana Haim, Cooper Hoffman, Sean Penn, Tom Waits"
+                        }
+        dataBase[8] = {"name": "Ghostbusters: Afterlife",
+                        "releaseDate" : "2021",
+                        "poster" : "https://prod1.agileticketing.net/images/user/drexel_14105/site_field.jpg",
+                        "IMBDrating" : "7.2",
+                        "Director" : "Jason Reitman",
+                        "Stars" : " Carrie Coon, Paul Rudd, Finn Wolfhard, Mckenna Grace"
+                        }
+        
+        dataBase.forEach(data=>{
+            console.log(data.name);
+            let movieCard = document.createElement("div");
+            let movieName = document.createElement("p");
+            movieName.textContent = data.name;
+            let poster = document.createElement("img");
+            poster.src = data.poster;
+            let releaseDate = document.createElement("p");
+            releaseDate.textContent = data.releaseDate;
+            let director = document.createElement("p");
+            director.textContent = data.Director;
+            let imbd = document.createElement("p");
+            imbd.textContent = data.IMBDrating;
+            let star = document.createElement("p");
+            star.textContent = data.Stars;
+
+            movieCard.append(poster, movieName, releaseDate, director, star, imbd);
+            container.append(movieCard);
+        })
+    </script>
+</body>
+</html>

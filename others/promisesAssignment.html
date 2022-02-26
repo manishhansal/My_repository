@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Ordering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&family=Dancing+Script&family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            background-image: url("https://i.ibb.co/QpVcwVv/food-366875.jpg");
+            background-repeat: no-repeat;
+            background-size: 1600px 900px;
+        }
+
+        #container {
+            margin-top: 50px;
+        }
+
+      .items {
+        display: flex;
+        /* background-color: aqua; */
+        /* border: 1px solid red; */
+        margin-bottom: 5px;
+        box-sizing: border-box;
+        padding-top: 5px;
+        padding-left: 2px;
+      }
+
+      .head {
+        display: flex;
+        margin-left: 410px;
+      }
+
+      .head div {
+        margin-right: 2px;
+      }
+
+      .head div h3 {
+        font-family: "Baloo Bhaijaan 2", cursive;
+        font-weight: 700;
+        font-size: 20px;
+        margin-right: 80px;
+        color: rgb(188, 226, 21);
+        margin-bottom: -5px;
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      #box1, #box2,  #box3,  #box4,  #box5,  #box6,  #box7,  #box8,  #box9,  #box10 {
+        width: 30px;
+        height: 30px;
+      }
+
+      .boxDiv {
+        box-sizing: border-box;
+        padding-top: 4.5%;
+      }
+
+      .headBox {
+        width: 700px;
+        height: 400px;
+        overflow-y: scroll;
+        margin-left: 400px;
+        /* border: 1px solid red; */
+      }
+
+      .headBox::-webkit-scrollbar {
+        display: none;
+       }
+
+      .size {
+        width: 20%;
+        padding-left: 1%;
+        padding-top: 4%;
+        font-family: "Baloo Bhaijaan 2", cursive;
+        font-weight: 500;
+        font-size: 20px;
+        margin-right: 50px;
+        color: white;
+      }
+
+      .size1 {
+        width: 6%;
+        padding-top: 4%;
+        font-family: "Baloo Bhaijaan 2", cursive;
+        font-weight: 500;
+        font-size: 20px;
+        margin-right: 50px;
+        padding-left: 10px;
+        color: white;
+      }
+
+      .imgDiv {
+        margin-right: 80px;
+        margin-left: 20px;
+      }
+
+      .price {
+          margin-left: 22px;
+      }
+
+      .select {
+          margin-left: -30px;
+      }
+
+      #btn {
+          width: 300px;
+          height: 50px;
+          /* border-radius: 30px; */
+          color: white;
+          font-size: 20px;
+          font-family: "Baloo Bhaijaan 2", cursive;
+
+          border-radius: 50px;
+          background: #2A261A;
+          box-shadow: inset 20px 20px 31px #242016,
+            inset -20px -20px 31px #302c1e;
+      }
+
+      #btn:hover {
+          background-color: rgb(188, 226, 21);
+          color: white;
+          font-size: 30px;
+      }
+      .btnDiv {
+          margin-left: 210px;
+      }
+
+      .items:hover {
+          border: 2px solid green;
+      }
+
+      .nav {
+          width: 100%;
+          height: 50px;
+          background-color: rgb(55,46,26);
+      }
+      .nav ul li {
+          color: whitesmoke;
+          list-style: none;
+          margin-left: 20px;
+          margin-right: 20px;
+          font-size: 20px;
+          font-weight: 600;
+          font-family: "Baloo Bhaijaan 2", cursive;
+          padding-top: 5px;
+      }
+
+      .nav ul {
+          display: flex;
+          flex-direction: row-reverse;
+      }
+
+      .title h1 {
+          color: white;
+          font-family: "Baloo Bhaijaan 2", cursive;
+          font-size: 50px;
+      }
+
+      .title {
+          margin-left: 630px;
+          margin-top: -40px;
+          margin-bottom: 10px;
+      }
+
+      .blur {
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
+      }
+
+      .myDiv {
+          width: 400px;
+          height: 400px;
+          font-size: 50px;
+          margin-left: 550px;
+          margin-top: 90px;
+          box-sizing: border-box;
+          padding-left: 80px;
+          padding-top: 50px;
+          justify-content: center;
+          align-items: center;
+          color: black;
+          border-radius: 85px;
+          background: #21e881;
+          box-shadow: inset 9px 9px 18px #0d5d34,
+            inset -9px -9px 18px #35ffce;
+          
+      }
+
+      .loader {
+        border: 10px solid #d4d2d2;
+        border-radius: 50%;
+        border-top: 10px solid #0fbaee;
+        width: 50px;
+        height: 50px;
+        -webkit-animation: spin 0.5s linear infinite; /* Safari */
+        animation: spin 0.5s linear infinite;
+        margin-left: 70px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+
+        .men {
+            display: flex;
+        }
+
+        #headOrder {
+            justify-content: center;
+            text-align: center;
+            width: 30%;
+            color: black;
+            background-color: white;
+            margin-left: 550px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin-top: 50px;
+            display: none;
+        }
+
+        .headList {
+            /* width: 30%; */
+            display: flex;
+            color: black;
+            background-color: white;
+            border-top: 1px solid #cecece;
+            border-bottom: 1px solid #cecece;
+            border-left: 0;
+            border-right: 0;
+            border-style: dashed;
+            /* padding-left: 80px; */
+            font-family: "Baloo Bhaijaan 2", cursive;
+            margin-left: 50px;
+        }
+
+        #sn, #fi, #rs {
+            justify-content: center;
+            text-align: center;
+            margin-right: 50px;
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-family: "Baloo Bhaijaan 2", cursive;
+        }
+
+        #total {
+            display: flex;
+            font-family: "Baloo Bhaijaan 2", cursive;
+            color: black;
+            box-sizing: border-box;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #orderId {
+            display: flex;
+            font-family: "Baloo Bhaijaan 2", cursive;
+        }
+
+        #orderId > h2 {
+            margin-left: 100px;
+            margin-right: 50px;
+        }
+
+        /* #total > h4 {
+            margin-right: 200px;
+        } */
+
+        /* #headOrder {
+            display: none;
+        } */
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+        <!-- <img src="https://i.ibb.co/hszRRp2/food-Logo-removebg-preview.png"> -->
+        <ul>
+            <li>About Us</li>
+            <li>Sign Up</li>
+            <li>Sign In</li>
+            <li>Home</li>
+        </ul>
+    </div>
+
+    <div id="myList">
+
+    </div>
+
+    <div id="aCont">
+
+    </div>
+
+    <div id="container">
+        <div class="title">
+            <h1>Food Items</h1>
+        </div>
+
+      <div class="head">
+        <div>
+          <h3>S.no.</h3>
+        </div>
+
+        <div>
+          <h3>Item Image</h3>
+        </div>
+
+        <div>
+          <h3>Item Name</h3>
+        </div>
+
+        <div class="price">
+          <h3>Price</h3>
+        </div>
+
+        <div class="select">
+          <h3>Select</h3>
+        </div>
+      </div>
+
+      <div class="headBox">
+
+            <div class="items">
+                <div class="size1">
+                    <p>1.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img src="https://i.ibb.co/SJRgXg5/burgerkingfries.jpg" />
+                </div>
+
+                <div class="size">
+                    <p>King Fries</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹90</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box1" value="King Fries"/>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="size1">
+                    <p>2.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img
+                    src="https://i.ibb.co/HdPVN1q/mcdonald-french-fries-28small-2f-medium-2f-large-29-500x500.png"
+                    />
+                </div>
+
+                <div class="size">
+                    <p>Medium Fries</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹80</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box2" value="Medium Fries"/>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="size1">
+                    <p>3.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img src="https://i.ibb.co/VYJZG33/Fries-300.jpg" />
+                </div>
+
+                <div class="size">
+                    <p>Regular Fries</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹70</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box3" value="Regular Fries" />
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="size1">
+                    <p>4.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img src="https://i.ibb.co/3cxhphq/piri-piri.jpg" />
+                </div>
+
+                <div class="size">
+                    <p>Peri Peri Fries</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹90</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box4" value="Peri Peri Fries" />
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="size1">
+                    <p>5.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img src="https://i.ibb.co/kKL5H8q/60347232.jpg" />
+                </div>
+
+                <div class="size">
+                    <p>Cheesy Fries</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹99</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box5" value="Cheesy Fries"/>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="size1">
+                    <p>6.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img src="https://i.ibb.co/rbY4mjP/53526022.jpg" />
+                </div>
+
+                <div class="size">
+                    <p>Crispy Veg</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹55</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box6" value="Crispy Veg"/>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="size1">
+                    <p>7.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img src="https://i.ibb.co/DYTPsg0/61589069.jpg" />
+                </div>
+
+                <div class="size">
+                    <p>Crispy Chicken</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹75</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box7" value="Crispy Chicken"/>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="size1">
+                    <p>8.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img
+                    src="https://i.ibb.co/R3FS59M/83-833712-not-just-for-vegetarians-our-great-tasting-bk.jpg"
+                    />
+                </div>
+
+                <div class="size">
+                    <p>BK Veggie</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹95</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box8" value="BK Veggie"/>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="size1">
+                    <p>9.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img
+                    src="https://i.ibb.co/6b0DgWC/8f57c2a66f035aafdada82cb62ca3cbf.jpg"
+                    />
+                </div>
+
+                <div class="size">
+                    <p>Fiery Chicken</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹159</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box9" value="Fiery Chicken"/>
+                </div>
+            </div>
+
+            <div class="items">
+                <div class="size1">
+                    <p>10.</p>
+                </div>
+
+                <div class="imgDiv">
+                    <img src="https://i.ibb.co/z6nxj4f/ccibgiyjjyodbshn94fc.jpg" />
+                </div>
+
+                <div class="size">
+                    <p>Paneer King's Melt</p>
+                </div>
+
+                <div class="size1">
+                    <p>₹129</p>
+                </div>
+
+                <div class="boxDiv">
+                    <input type="checkbox" id="box10" value="Paneer King's Melt"/>
+                </div>
+            </div>
+
+            <div class="btnDiv">
+                <button onclick="order()" id="btn">Order Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order summary -->
+    <div id="headOrder">
+        <div id="orderId">
+            <h2>Order Summary</h2>
+        </div>
+
+        <div class="headList">
+            <div id="sn">
+                <h3>#</h3>
+            </div>
+
+            <div id="fi">
+                <h3>Food Item</h3>
+            </div>
+
+            <div id="rs">
+                <h3>Price(Rs.)</h3>
+            </div>
+        </div>
+
+        <div id="total">
+            <h4>Total :&ensp; </h4>
+        </div>
+    </div>
+  </body>
+
+  <script>
+    //   document.getElementById("headOrder").style.display = none;
+      function order(){
+        //  var cont = document.getElementsByTagName("body")[0];
+        //  cont.setAttribute("class", "blur");
+
+        let main = document.getElementById("container");
+        main.style.display = "none"
+        let containerB = document.getElementById("aCont");
+        let dis = document.createElement("div");
+        dis.classList.add("myDiv");
+
+        let div1 = document.createElement("div");
+        div1.classList.add("loader");
+
+        let contentP = document.createElement("p");
+        contentP.textContent = "Please wait!"
+
+        let contentP1 = document.createElement("p");
+        contentP1 = "Sorry For Inconvenience"
+
+        dis.append(contentP, div1, contentP1);
+        containerB.append(dis);
+
+        setTimeout(display, 5000);
+        function display(){
+            let list = document.getElementById("myList");
+            list.className = "mainDiv";
+            list.innerText = "";
+
+            let main2 = document.getElementById("aCont");
+            main2.style.display = "none"
+            // alert("Ready");
+            let foods = [];
+            let obj = {"King Fries" : 90, "Medium Fries" : 80, "Regular Fries" : 70, "Peri Peri Fries" : 90, "Cheesy Fries" : 99, "Crispy Veg" : 55, "Crispy Chicken" : 75, "BK Veggie" : 95, "Fiery Chicken" : 159, "Paneer King's Melt" : 129}
+           
+            const cb1 = document.querySelector('#box1').checked;
+            const cb2 = document.querySelector('#box2').checked;
+            const cb3 = document.querySelector('#box3').checked;
+            const cb4 = document.querySelector('#box4').checked;
+            const cb5 = document.querySelector('#box5').checked;
+            const cb6 = document.querySelector('#box6').checked;
+            const cb7 = document.querySelector('#box7').checked;
+            const cb8 = document.querySelector('#box8').checked;
+            const cb9 = document.querySelector('#box9').checked;
+            const cb10 = document.querySelector('#box10').checked;
+            if(cb1){
+                foods.push(document.getElementById("box1").value);
+            }
+            if(cb2){
+                foods.push(document.getElementById("box2").value);
+            }
+            if(cb3){
+                foods.push(document.getElementById("box3").value);
+            }
+            if(cb4){
+                foods.push(document.getElementById("box4").value);
+            }
+            if(cb5){
+                foods.push(document.getElementById("box5").value);
+            }
+            if(cb6){
+                foods.push(document.getElementById("box6").value);
+            }
+            if(cb7){
+                foods.push(document.getElementById("box7").value);
+            }
+            if(cb8){
+                foods.push(document.getElementById("box8").value);
+            }
+            if(cb9){
+                foods.push(document.getElementById("box9").value);
+            }
+            if(cb10){
+                foods.push(document.getElementById("box10").value);
+            }
+            console.log(foods)
+            var sn = 1;
+            var cnt = 0;
+
+            let ordId = document.getElementById("orderId");
+
+            let ids = "Order Id : " + parseInt(Math.random()*100)+500;
+            let oid = document.createElement("h3");
+            oid.textContent = ids;
+            ordId.append(oid);
+            
+            let sum = 0;
+            foods.forEach (function (prices){
+                
+                let snP = document.createElement("p");
+                snP.textContent = sn;
+                sn++;
+
+                let a = document.getElementById("sn");
+                a.append(snP);
+
+                let fiP = document.createElement("p");
+                fiP.textContent = foods[cnt];
+
+                let b = document.getElementById("fi");
+                b.append(fiP);
+
+                let prP = document.createElement("p");
+                prP.textContent = obj[foods[cnt]];
+
+                sum += obj[foods[cnt]]
+                let c = document.getElementById("rs");
+                c.append(prP);
+
+                cnt++;
+
+                
+            })
+            console.log(sum)
+            let h4 = document.createElement("h4");
+            h4.textContent = sum;
+
+            let ttl = document.getElementById("total");
+            ttl.append(h4);
+
+            let displayCard = document.getElementById("headOrder");
+            displayCard.style.display = "block";
+        }
+      }
+  </script>
+</html>

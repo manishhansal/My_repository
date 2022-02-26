@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cart</title>
+  </head>
+  <style>
+    img {
+      height: 100px;
+      width: 100px;
+    }
+    table,
+    th,
+    td {
+      border: 1px solid #cecece;
+    }
+  </style>
+  <body>
+      <h1>CART PAGE</h1>
+      <div id="container"></div>
+      <input type="text" placeholder="Enter Coupon" id="couponInput" />
+      <button onclick="applyCoupon()">APPLY COUPON</button>
+
+      <br />
+      <br />
+       <br />
+       <br />
+
+       <p id="totalDisplay"></p>
+        <br />
+
+      <a href="checkout.html">CLICK HERE FOR CHECKOUT</a>
+  </body>
+</html>
+<script>
+    let container = document.getElementById("container");
+    let totalDisplayDiv = document.getElementById("totalDisplay");
+
+    // get the data; localstorage;
+
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if(cart === null){
+        localStorage.setItem("cart", JSON.stringify([]));
+    }
+
+    let total = cart.reduce((acc, curr) => {
+        return acc + curr.price;
+    }, 0);
+
+    const updateTotalDisplay = (total) => {
+        totalDisplayDiv.textContent = total;
+    };
+
+    var table = document.createElement("table");
+
+    var thead = document.createElement("thead");
+    var theadRow = document.createElement("tr");
+
+    var th1 = document.createElement("th");
+    th1.textContent = "Product Image"
+
+    var th2 = document.createElement("th");
+    th2.textContent = "Product Name"
+
+    var th3 = document.createElement("th");
+    th3.textContent = "Product Price";
+
+    theadRow.append(th1,th2,th3);
+    thead.append(theadRow);
+
+    var tbody = document.createElement("tbody");
+
+    function displayData(data){
+        data.forEach((prod)=>{
+
+            var tr = document.createElement("tr");
+
+            var td1 = document.createElement("td");
+            var prodImage = document.createElement("img");
+            prodImage.src = prod.image;
+            td1.append(prodImage);
+            var td2 = document.createElement("td");
+            td2.textContent = prod.title;
+            var td3 = document.createElement("td");
+            td3.textContent = "INR : " + prod.price;
+
+            tr.append(td1, td2, td3);
+
+            tbody.append(tr);
+         });
+         table.append(thead,tbody);
+         container.append(table);
+    }
+
+    function applyCoupon(){
+        let CouponInput = document.getElementById("couponInput").value;
+
+        if( CouponInput === "masai30"){
+            total = total - 0.3 * total;
+            updateTotalDisplay(total)
+        }
+    }
+
+    updateTotalDisplay(total);
+    displayData(JSON.parse(localStorage.getItem("cart")));
+</script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            margin-top: 1%;
+            margin-left: 1%;
+            margin-right: 1%;
+
+            grid-gap: 5px;
+        }
+
+        #container > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #cecece;
+        }
+
+        h2 {
+            margin-left: 600px;
+        }
+
+        #deleteBtn {
+            margin-left: 650px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="input1" placeholder="Item">
+    <input type="number" id="input2" placeholder="Quantity">
+    <button onclick="showData()">Submit</button>
+
+    <div>
+        <h2>Grocery ToDo List</h2>
+    </div>
+
+    <div id="container">
+
+    </div>
+
+    <button onclick="deleteItem()" id="deleteBtn">Delete</button>
+
+    <script>
+            
+            let store = JSON.parse(localStorage.getItem("store"));
+            if(store===null){
+                localStorage.setItem("store", JSON.stringify([]));
+            }
+            let cnt = 0;
+            let cnt1 = 1;
+        function showData(){
+            let item = document.getElementById("input1").value;
+            let quantity = document.getElementById("input2").value;
+
+            let  again = JSON.parse(localStorage.getItem("store"));
+            
+            let obj = {};
+            obj.name = item;
+            obj.quant = quantity;
+    
+            // console.log(again)
+            again.push(obj);
+
+            let store = localStorage.setItem("store", JSON.stringify(again));
+            
+            // localStorage.clear()
+            
+            let data = JSON.parse(localStorage.getItem("store"));
+
+            console.log(data[0].name);
+
+            let mainContainer = document.getElementById("container");
+
+            let serialNumberDiv = document.createElement("div");
+            serialNumberDiv.className = "flex";
+            let serialNumberP = document.createElement("p");
+            serialNumberP.textContent = cnt1;
+            cnt1++;
+
+            serialNumberDiv.append(serialNumberP);
+
+            let foodNameDiv = document.createElement("div");
+            foodNameDiv.className = "flex";
+            let foodNameP = document.createElement("p");
+            foodNameP.textContent = data[cnt].name;
+
+            foodNameDiv.append(foodNameP);
+
+            let quantityDiv = document.createElement("div");
+            quantityDiv.className = "flex";
+            let quantityP = document.createElement("p");
+            quantityP.textContent = data[cnt].quant;
+            cnt++;
+            quantityDiv.append(quantityP);
+
+            mainContainer.append(serialNumberDiv, foodNameDiv, quantityDiv);
+
+            document.getElementById("input1").value = "";
+            document.getElementById("input2").value = "";
+            
+        }
+
+        function deleteItem(){
+            localStorage.clear();
+            document.getElementById("container").textContent = "";
+        }
+
+    </script>
+</body>
+</html>

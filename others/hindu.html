@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            background-color: rgb(245,245,245);
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+
+        #all {
+            display: inline;
+        }
+
+        #back{
+            background-color: rgb(8,52,91);
+            width: 525px;
+            margin-bottom: 4%;
+            display: inline-block;
+        }
+
+        #content {
+            margin-bottom: 1%;
+            color: white;
+        }
+
+        #content > img {
+            width: 525px;
+            height: 300px;
+        }
+
+        .margin,p {
+            margin-left: 2%;
+            margin-right: 4%;
+            margin-top: 1%;
+            margin-bottom: 3%;
+        }
+
+
+        /* For first pic */
+        
+        .imgSize > img{
+            width: 165px;
+            height: 156px;
+        }
+
+        .exImg > img {
+            width: 165px;
+            height: 156px;
+        }
+
+        .exBr{
+            display: flex;
+            margin-bottom: 3%;
+        }
+
+        .bottom{
+            display: flex;
+            margin-bottom: 3%;
+        }
+
+        #container {
+            width: 44%;
+            display: inline;
+            margin-left: 2%;
+        }
+
+        .containerContent {
+            display: inline-block;
+            vertical-align: top
+        }
+        
+        .imgSize {
+            margin-bottom: 3%;
+        }
+
+        #title {
+            color: rgb(8,52,91);
+        }
+
+        .first {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: -3%;
+        }
+
+         /* For Tablets(Medium Screen) */
+        @media only screen and (min-width: 600px){
+            
+            .bottom {
+                display: none;
+            }
+
+            #container {
+                display: line;
+            }
+
+            .medium {
+                display: flex;
+            }
+
+            #all {
+                display: inline;
+            }
+
+            #back {
+                width: 700px;
+            }
+
+            #content > img {
+                width: 700px;
+            }
+            
+            .exImg > img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        /* For Desktops(Large Screen) */
+        @media only screen and (min-width: 768px) {
+            
+            #container {
+                display: inline;
+            }
+
+            .medium {
+                display: inline;
+            }
+            #all {
+                display: flex;
+            }
+
+            .bottom {
+                display: inline;
+            }
+
+            .exBr {
+                margin-bottom: 3%;
+            }
+
+            #back {
+                width: 800px;
+            }
+
+            #content > img {
+                width: 800px;
+            }
+
+            .exImg > img {
+                width: 165px;
+                height: 156px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="all">
+        <div class="first">
+            <div id="back">
+                <div id="content">
+                    <img src="https://th.thgim.com/news/735o81/article38359353.ece/ALTERNATES/FREE_660/TopNews-NirmalaSitharaman"/>
+                    <h1 class="margin">During COVID, MGNREGA served as a lifeline for workers who lost jobs: Mallikarjun Kharge</h1>
+                    <p>KALLOL BHATTACHERJEE <br>SUHASINI MAIDAR </p>
+                    <p>U.S. President to visit Sabarmati Ashram ahead of 'Namaste Trump' event</p>
+                </div>
+            </div>
+        
+            <div class="bottom">
+                <div class="exBr">
+                    <div class="exImg">
+                        <img src="https://th.thgim.com/news/national/e97vnq/article38362919.ece/ALTERNATES/FREE_660/e2164495-9a66-47b9-8747-8e3936f51d93jpg"/>
+                    </div>
+                    <div class="ex"> 
+                        <div>
+                            <p id="title">NATIONAL</p>
+                        </div>
+                        <div>
+                            <p>Ahmedabad glitters to welcome Donald Trump</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Right Column -->
+    
+        <div id="container">
+
+            <div class="medium">
+
+                <div class="exBr">
+                    <div class="exImg">
+                        <img src="https://th.thgim.com/news/national/ednh1v/article37802101.ece/ALTERNATES/FREE_660/vbk-Winter-Session--Parliament-venkaiah-naidu-pti-1"/>
+                    </div>
+                    <div class="ex">
+                        <div>
+                            <p id="title">NATIONAL</p>
+                        </div>
+                        <div>
+                            <p>The Huddle 2022 | Regional integration pegged to go revival</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exBr">
+                    <div class="exImg">
+                        <img src="https://th.thgim.com/news/national/tw4n98/article34457921.ece/ALTERNATES/FREE_660/vbk-delhi-hc-3"/>
+                    </div>
+                    <div class="ex">
+                        <div>
+                            <p id="title">NATIONAL</p>
+                        </div>
+                        <div>
+                            <p>Over 10 lakh Kashmir students to don school uniforms after seven months</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="medium">
+                
+                <div class="exBr">
+                    <div class="exImg">
+                        <img src="https://th.thgim.com/business/Industry/kd44or/article36477463.ece/ALTERNATES/FREE_660/N-Chandrasekaran"/>
+                    </div>
+                    <div class="ex">
+                        <div>
+                            <p id="title">BUDGET 2022</p>
+                        </div>
+                        <div>
+                            <p>Union Budget 2022| Industry to go welcomes provisions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exBr">
+                    <div class="exImg">
+                        <img src="https://th.thgim.com/news/national/dywvl8/article38332812.ece/ALTERNATES/FREE_660/675125122021141340309ENCOUNTERSGR25122021JPG"/>
+                    </div>
+                    <div class="ex">
+                        <div>
+                            <p id="title">NATIONAL</p>
+                        </div>
+                        <div>
+                            <p>Some restrictions imposed on export of medical equipment to China</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

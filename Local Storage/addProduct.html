@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Products</title>
+    <style>
+
+        #selectInput, #titleText {
+            width: 200px;
+            height: 25px;
+            padding: 2px;
+            border: 1px solid #cecece;
+        }
+
+        #price {
+            width: 70px;
+            height: 25px;
+            border: 1px solid #cecece;
+        }
+
+        #description {
+            border: 1px solid #cecece;
+        }
+
+        #btn {
+            width: 60px;
+            height: 30px;
+            padding: 2px;
+            background-color: blue;
+            color: white;
+            border: 1px solid #cecece;
+        }
+
+        #prodInfo {
+            border-top: 1px solid #cecece;
+            border-bottom: 1px solid #cecece;
+        }
+
+        #head, #prodInfo {
+            display: flex;
+        }
+
+        #head > div {
+            margin-right: 100px;
+            margin-left: 50px;
+        }
+
+        #prodInfo > div {
+            margin-right: 70px;
+        }
+
+        .center {
+            margin-left: 200px;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="head">
+
+        <div>
+            <h1>Add Products</h1>
+            <h3>Category</h3>
+            <select name="select" id="selectInput">
+                <option value="Home appliance">Home appliance</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Electronics">Electronics</option>
+            </select>
+            <h3>Title</h3>
+            <input type="text" id="titleText">
+            <h3>Description</h3>
+            <textarea name="Description" id="description" cols="30" rows="10"></textarea>
+            <h3>Price</h3>
+            <input type="text" id="price">
+            <br>
+            <br>
+            <button onclick="displayProduct()" id="btn">Add</button>
+        </div>
+    
+        <div>
+            <h1 class="center">Product Info</h1>
+    
+            <div id="prodInfo">
+                <div id="serialNumber">
+                    <h3>#</h3>
+                </div>
+    
+                <div id="prodCategory">
+                    <h3>Category</h3>
+                </div>
+    
+                <div id="prodTitle">
+                    <h3>Title</h3>
+                </div>
+    
+                <div id="prodDescription">
+                    <h3>Description</h3>
+                </div>
+    
+                <div id="prodPrice">
+                    <h3>Price</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let bozaz = JSON.parse(localStorage.getItem("bozaz"));
+        if(bozaz===null){
+            localStorage.setItem("bozaz", JSON.stringify([]));
+        }
+
+        
+        displayProd();
+        let tot = 1;
+        let cnt = 0;
+        function displayProduct(){
+
+            let selectVal = document.getElementById("selectInput").value;
+            // console.log(selectVal);
+
+            let titleVal = document.getElementById("titleText").value;
+            // console.log(titleVal);
+
+            let descriptionVal = document.getElementById("description").value;
+            // console.log(descriptionVal);
+
+            let priceVal = document.getElementById("price").value;
+            // console.log(priceVal);
+
+            let  bozazAgain = JSON.parse(localStorage.getItem("bozaz"));
+            
+            let obj = {};
+            obj.category = selectVal;
+            obj.title = titleVal;
+            obj.description = descriptionVal;
+            obj.price = priceVal;
+    
+            // console.log(again)
+            bozazAgain.push(obj);
+
+            let bozaz = localStorage.setItem("bozaz", JSON.stringify(bozazAgain));
+            
+            // localStorage.clear()
+            
+            let data = JSON.parse(localStorage.getItem("bozaz"));
+            console.log(data);
+
+            
+            let serialNumberP = document.createElement("p");
+            serialNumberP.textContent = tot;
+
+            let a = document.getElementById("serialNumber");
+            a.append(serialNumberP);
+
+            let categoryP = document.createElement("p");
+            categoryP.textContent = data[cnt].category;
+
+            let b = document.getElementById("prodCategory");
+            b.append(categoryP);
+
+            let titleP = document.createElement("p");
+            titleP.textContent = data[cnt].title;
+
+            let c = document.getElementById("prodTitle");
+            c.append(titleP);
+
+            let descriptionP = document.createElement("p");
+            descriptionP.textContent = data[cnt].description;
+
+            let d = document.getElementById("prodDescription");
+            d.append(descriptionP);
+
+            let priceP = document.createElement("p");
+            priceP.textContent = data[cnt].price;
+
+            let e = document.getElementById("prodPrice");
+            e.append(priceP);
+            cnt++;
+            
+            document.getElementById("selectInput").value = "";
+            document.getElementById("titleText").value = "";
+            document.getElementById("description").value = "";
+            document.getElementById("price").value = "";
+            tot++;
+        }
+
+        function displayProd(){
+
+            let data = JSON.parse(localStorage.getItem("bozaz"));
+            console.log(data);
+
+            let tot = 1;
+            data.forEach(element => {
+                let serialNumberP = document.createElement("p");
+                serialNumberP.textContent = tot;
+                tot++;
+
+                let a = document.getElementById("serialNumber");
+                a.append(serialNumberP);
+
+                let categoryP = document.createElement("p");
+                categoryP.textContent = element.category;
+
+                let b = document.getElementById("prodCategory");
+                b.append(categoryP);
+
+                let titleP = document.createElement("p");
+                titleP.textContent = element.title;
+
+                let c = document.getElementById("prodTitle");
+                c.append(titleP);
+
+                let descriptionP = document.createElement("p");
+                descriptionP.textContent = element.description;
+
+                let d = document.getElementById("prodDescription");
+                d.append(descriptionP);
+
+                let priceP = document.createElement("p");
+                priceP.textContent = element.price;
+
+                let e = document.getElementById("prodPrice");
+                e.append(priceP);
+            });
+
+        }
+    </script>
+
+</body>
+</html>

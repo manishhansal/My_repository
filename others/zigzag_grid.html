@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            margin: 0% 15% 10% 15%;
+        }
+
+        .good {
+            width: 150px;
+            height: 180px;
+            background-color: rgb(33,120,103);
+            margin: 30px 40px 30px 0px;
+            border-radius: 2%;
+        }
+
+        #first {
+            display: flex;
+        }
+
+        #first div:nth-child(2) {
+            flex-grow: 1;
+        }
+
+        #second {
+            display: flex;
+        }
+
+        #second div:nth-child(1) {
+            flex-grow: 1;
+        }
+
+        #third {
+            display: flex;
+        }
+
+        #third div:nth-child(3) {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="first">
+        <div class="good"></div>
+        <div class="good"></div>
+        <div class="good"></div>
+    </div>
+    <div id="second">
+        <div class="good"></div>
+        <div class="good"></div>
+        <div class="good"></div>
+    </div>
+    <div id="third">
+        <div class="good"></div>
+        <div class="good"></div>
+        <div class="good"></div>
+    </div>
+</body>
+</html>

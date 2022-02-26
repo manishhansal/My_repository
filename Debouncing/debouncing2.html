@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OMDB API</title>
+  </head>
+  <style>
+    input {
+      width: 200px;
+      padding: 6px;
+    }
+
+    #movies {
+      padding: 6px;
+      width: 200px;
+      height: 280px;
+      border: 1px solid black;
+      overflow-y: scroll;
+   
+    }
+
+    img {
+      width: 50px;
+      height: 80px;
+    }
+
+    .flexDiv {
+      display: flex;
+    }
+
+    #container {
+      margin-left: 100px;
+    }
+
+    .img_size{
+        width:450px;
+        height: 400px;
+    }
+
+  </style>
+  <body>
+    <div class="flexDiv">
+      <div>
+        <input type="text" id="query" oninput="debounce(main,1000)" />
+        <div id="movies"></div>
+      </div>
+      <div id="container"></div>
+    </div>
+    <script>
+      let API_KEY = "3b2c3026";
+
+      async function main() {
+        let data = await searchMovie();
+        if (data === undefined) {
+          return false;
+        }
+        displayData(data);
+      }
+
+      async function searchMovie() {
+        try {
+          let movie = document.getElementById("query").value;
+          let res = await fetch(
+            `http://www.omdbapi.com/?apikey=${API_KEY}&s=${movie}`
+          );
+          let data = await res.json();
+
+          console.log(data);
+          console.log(data.Search);
+
+          return data.Search;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      let movies_div = document.getElementById("movies");
+      function displayData(moviesList) {
+        movies_div.innerHTML = "";
+        moviesList.forEach(function (movie) {
+          let img = document.createElement("img");
+        
+          img.src = movie.Poster;
+
+          img.addEventListener("click", function () {
+            document.getElementById("container").innerHTML = ""
+            let div = document.createElement("div");
+
+            let img = document.createElement("img");
+            img.className="img_size"
+            img.src = movie.Poster;
+
+            let year = document.createElement("p");
+            year.textContent = movie.Year;
+
+            let title = document.createElement("p");
+            title.textContent = movie.Title;
+
+            let getContainer = document.getElementById("container");
+            div.append(img, title, year);
+            getContainer.append(div);
+          });
+
+          let p = document.createElement("p");
+          p.textContent = movie.Title;
+
+          movies_div.append(p, img);
+          p.addEventListener("click", function () {
+            document.getElementById("container").innerHTML = ""
+            let div = document.createElement("div");
+
+            let img = document.createElement("img");
+            img.className="img_size"
+            img.src = movie.Poster;
+
+            let year = document.createElement("p");
+            year.textContent = movie.Year;
+
+            let title = document.createElement("p");
+            title.textContent = movie.Title;
+
+            let getContainer = document.getElementById("container");
+            div.append(img, title, year);
+            getContainer.append(div);
+          });
+          
+        });
+      }
+
+      let timerId;
+
+      function debounce(cbFunc, delay) {
+        if (timerId) {
+          clearTimeout(timerId);
+        }
+
+        timerId = setTimeout(function () {
+          cbFunc();
+        }, delay);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            margin-left: 500px;
+            /* margin-top: 20px; */
+        }
+        * {
+            box-sizing: border-box;
+            /* margin-left: 10px; */
+        }
+
+        #min {
+            width: 200px;
+            height: 100px;
+            background-color: red;
+            text-align: center;
+            border: 2px solid black;
+            font-size: xx-large;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #max {
+            width: 200px;
+            height: 100px;
+            background-color: green;
+            text-align: center;
+            border: 2px solid black;
+            font-size: xx-large;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .orient {
+            display: flex;
+            margin-left: -80px;
+        }
+
+        .min1 {
+            margin-right: 100px;
+        }
+
+        .min1, .min2 {
+            margin-top: 20px;
+            margin-bottom: -5px;
+        }
+
+        div > h2 {
+            margin-left: 80px;
+        }
+
+        div > h3 {
+            margin-left: 130px;
+            font-size: 30px;
+            font-family: sans-serif;
+        }
+
+        #item2, #item3, #item4, #item5, #item6, #item7, #item8, #item9, #item10, #item11 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin-right: 20px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border: 1px solid black;
+            font-size: 40px;
+            padding-top: 20px;
+        }
+
+        #item5, #item7 {
+            background-color: rgb(255,102,0);
+        }
+
+        #item12 {
+            width: 350px;
+            height: 70px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            border: 1px solid black;
+            padding-top: 15px;
+            font-size: 30px;
+        }
+
+        #item1 {
+            width: 350px;
+            height: 150px;
+            background-color: rgb(179,179,179);
+            border: 2px solid black;
+            font-size: xx-large;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: inline;
+        }
+
+        #move1, #move2, #move3 {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        #item11 {
+            margin-left: 118px;
+            background-color: rgb(128,0,101);
+            color: white
+        }
+
+        #move1 > div:nth-child(2){
+            background-color: rgb(255,102,0);
+        }
+
+        .uColor {
+            background-color: rgb(255,102,0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="orient">
+
+        <div class="min1">
+            <div id="min">43
+                <!-- <h1>43</h1> -->
+            </div>
+            <div>
+                <h2>MIN</h3>
+            </div>
+        </div>
+
+        <div class="min2">
+            <div id="max">2019
+                <!-- <h1>2019</h1> -->
+            </div>
+            <div>
+                <h2>MAX</h3>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <h3>SCORE</h3>
+
+        <input type="text" id="item1"/>
+
+        <!-- <div id="item1"></div> -->
+        <div id="move1">
+            <div id="item2" onclick="show(1)">1</div>
+            <div id="item3" onclick="show(2)">2</div>
+            <div id="item4" onclick="show(3)">3</div>
+        </div>
+        
+        <div id="move1">
+            <div id="item5" onclick="show(4)">4</div>
+            <div id="item6" onclick="show(5)">5</div>
+            <div id="item7" onclick="show(6)">6</div>
+        </div>
+        
+        <div id="move1">
+            <div id="item8" onclick="show(7)">7</div>
+            <div id="item9" onclick="show(8)">8</div>
+            <div id="item10" onclick="show(9)">9</div>
+        </div>
+        <div id="item11" onclick="show(0)">0</div>
+        <div id="item12" onclick="compare()">ENTER</div>
+
+    </div>
+
+
+    <script>
+        var dis = document.getElementById("item1").value;
+        var crt = parseInt(dis)
+        var min = document.getElementById("min").textContent;
+        var crtMin = parseInt(min);
+        var max = document.getElementById("max").textContent;
+        var crtMax = parseInt(max);
+        // console.log(btn)
+
+        function show(n){
+            document.getElementById("item1").value = document.getElementById("item1").value + n;
+            dis = document.getElementById("item1").value;
+        }
+
+        function compare(){
+            if(dis<crtMin){
+                document.getElementById("min").textContent = dis;
+                crtMin = parseInt(dis);
+            }
+            else if(dis>crtMax){
+                document.getElementById("max").textContent = dis;
+                crtMax = parseInt(dis);
+            }
+            console.log(crtMin, crtMax)
+            document.getElementById("item1").value = "";
+        }
+        
+
+    </script>
+</body>
+</html>
