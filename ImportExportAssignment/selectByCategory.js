@@ -1,47 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
+import navbar from "./components/navbar.js";
 
-        #container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+let header = document.getElementById("header");
 
-            margin-top: 5%;
-            margin-left: 5%;
-            margin-right: 5%;
-
-            grid-gap: 20px;
-        }
-
-        #container > div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #cecece;
-        }
-
-        img {
-            width: 200px;
-            height: 200px;
-        }
-    </style>
-
-</head>
-<body>
-    <select name="category" id="select" onclick="display()">
-        
-    </select>
-
-    <div id="container"></div>
-    <script>
-
-        let store = JSON.parse(localStorage.getItem("store"));
+header.innerHTML = navbar();
+let select = document.getElementById("select");
+let store = JSON.parse(localStorage.getItem("store"));
 
         if(store===null){
 
@@ -97,16 +60,18 @@
 
         fetchCategory();
 
-        
+        // let select = document.getElementById("select").value;
+        select.addEventListener("click", display);
         function display() {
 
-            let select = document.getElementById("select").value;
-            console.log(select)
+            // let select = document.getElementById("select").value;
+        
+            // console.log(select)
             async function foodItem() {
                 try {
-                    let res = await fetch(`http://themealdb.com/api/json/v1/1/filter.php?c=${select}`);
+                    let res = await fetch(`http://themealdb.com/api/json/v1/1/filter.php?c=${select.value}`);
                     let data1 = await res.json();
-                    console.log(data1)
+                    console.log("data1" + data1)
                     displayData(data1);
                 }
                 catch (err) {
@@ -117,6 +82,7 @@
             foodItem();
 
             function displayData(data1) {
+                // console.log(data1)
                 container.innerText = "";
                 data1.meals.forEach(element => {
 
@@ -139,7 +105,3 @@
         }
 
         // display();
-
-    </script>
-</body>
-</html>

@@ -23,6 +23,9 @@
 </head>
 <body>
 
+    <div id="profile"></div>
+
+
     <div id="container">
         <div id="registerContainer">
             <h1>Register</h1>
@@ -47,12 +50,7 @@
     </div>
 
     <script>
-        // let btn = document.getElementById("btn")
-        // btn.addEventListener("click", register)
-        // function register() {
-        //     console.log("Manish")
-        // }
-
+        
         async function register(){
             try {
                 let registerData = {
@@ -100,34 +98,67 @@
 
                 let data = await res.json();
                 console.log(data);
+                getUser(loginData.username, data.token);
             } catch (err) {
                 console.log(err);
             }
         };
 
-        // const login = async () => {
-        //     try {
-        //         let loginData = {
-        //             username : document.getElementById("loginUsername").value,
-        //             password : document.getElementById("loginPassword").value,
-        //         }
-        //         let loginDataJson = JSON.stringify(loginData);
+        async function getUser(username, token) {
+            try {
+                let res = await fetch(`http://masai-api-mocker.herokuapp.com/user/${username}`,
+                {
+                    headers : {
+                        "Content-Type" : "application/json",
+                        Authorization : `Bearer ${token}`,
+                    },
+                }
+                );
+                let data = await res.json();
+                
+                console.log(data);
+                displayData(data);
+            } catch (err) {
+                console.log(err);
+            }
+        }
 
-        //         let res = await fetch(`http://masai-api-mocker.herokuapp.com/auth/login`, {
-        //             method : "POST",
-        //             headers : {
-        //                 "Content-Type" : "application/json",
-        //             },
-        //             body: loginDataJson,
-        //         });
+        function displayData(data){
+            document.getElementById("container").style.display = "none";
+            document.getElementById("profile").textContent = "";
+            document.getElementById("profile").style.display = "inline";
+            let profile = document.getElementById("profile");
+            let card = document.createElement("div");
 
-        //         let data = await res.json(),
-        //         // console.log(data);
-        //     } 
-        //     catch (err) {
-        //         console.log(err)
-        //     }
-        // };
+            let h4 = document.createElement("h4");
+            h4.textContent = "Profile Info";
+
+            let nameP = document.createElement("p");
+            nameP.textContent = `Name : ${data.name}`;
+
+            let emailP = document.createElement("p");
+            emailP.textContent = `Email : ${data.email}`;
+
+            let mobileP = document.createElement("p");
+            mobileP.textContent = `Mobile : ${data.mobile}`
+
+            let home = document.createElement("button");
+            home.textContent = "Create an account";
+            home.addEventListener("click", goToHome);
+
+            card.append(h4, nameP, emailP, mobileP, home);
+            profile.append(card);
+        }
+
+        // document.getElementById("profile").style.display = "inline";
+        function goToHome(){
+            console.log("manish");
+            document.getElementById("profile").style.display = "none";
+            document.getElementById("container").style.display = "flex";
+        }
+
+
+        
     </script>
 </body>
 </html>

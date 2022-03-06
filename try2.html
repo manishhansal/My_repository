@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&family=Dancing+Script&family=Fira+Sans+Condensed&family=Satisfy&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        .blur   {
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            -moz-filter: blur(5px);
+            -o-filter: blur(5px);
+            -ms-filter: blur(5px);
+        }
+        #overlay    {
+            position: fixed;
+            display: none;
+            left: 0px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            background: rgba(255,255,255,.8);
+            z-index: 999;
+        }
+        #popup {
+            position: absolute;
+            margin: auto;
+            width: 40%;
+            height: 64%;
+            left: 30%;
+            top: 18%;
+            display: flex;
+            flex-direction: column;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0,0,0,.2);
+            border-radius: 0.3rem;
+            outline: 0;
+            align-items: center;
+        }
+
+        .popHeader {
+            display: flex;
+            font-family: 'Fira Sans Condensed', sans-serif;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgb(206, 196, 196);
+            width: 100%;
+        }
+
+        .popHeader h2 {
+            margin-left: 5%;
+            margin-right: 60%;
+        }
+
+        .popHeader a {
+            padding-top: 20px;
+            text-decoration: none;
+            color: black;
+            font-weight: 900;
+        }
+
+        .popupTextH4 {
+            font-family: 'Fira Sans Condensed', sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 32px;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #202124;
+        }
+
+        .popupContent {
+            width: 90%;
+        }
+
+        .popBtnDiv {
+            margin-top: 22%;
+            margin-left: 15%;
+        }
+
+        .popBtn {
+            padding: 11px;
+            width: 80%;
+            border-radius: 200px;
+            height: 44px;
+            text-align: center;
+            align-items: center;
+            /* flex-direction: row; */
+            cursor: pointer;
+            outline: none;
+            margin: auto;
+            font-style: normal;
+            font-family: 'Fira Sans Condensed', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            background-color: transparent;
+            border: 1.5px solid #202124;
+            color: #202124;
+        }
+
+        .popupTexth5 {
+            font-family: 'Fira Sans Condensed', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+            letter-spacing: -.1px;
+            color: #494949;
+        }
+
+        .popupTextP {
+            font-family: 'Fira Sans Condensed', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+            letter-spacing: -.1px;
+            color: #494949;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="overlay">
+        <div id="popup">
+            <div class="popHeader">
+                <h2>OFFERS & DEALS</h2>
+                <a href="javascript:myBlurFunction(0);"><div>&#9587;</div></a>
+            </div>
+
+            <div class="popupContent">
+                <h4 class="popupTextH4">Add 2 Pc  Hot n Crispy Chicken @ just Rs 99 on min cart value of Rs 499 or more. Applicable on 2nd & 3rd order for signed in user.</h4>
+                <h5 class="popupTexth5">Valid to 31/12/30</h5>
+                <p class="popupTextP">Add 2 Pc  Hot n Crispy Chicken @ just Rs 99 on min cart value of Rs 499 or more. Applicable on 2nd & 3rd order for signed in user.</p>
+                <div class="popBtnDiv"><button class="popBtn">Redeem</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main_container">
+        <a href="javascript:myBlurFunction(1);">OPEN POPUP</a><br/><br/>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas justo eros, volutpat quis gravida vel, mollis a erat. Vestibulum non ornare quam. Vivamus purus neque, volutpat vel magna ut, scelerisque ullamcorper leo. Duis lobortis libero in suscipit auctor. Donec suscipit fermentum aliquam. Morbi sit amet orci et felis iaculis convallis et eget orci. Duis ut nisi id ipsum sodales commodo. Duis at velit est.
+
+        Maecenas ullamcorper mi ac sem porta, viverra commodo lectus convallis. Vestibulum at vehicula dui, a hendrerit eros. Etiam luctus egestas porttitor. Vivamus rhoncus vulputate sem, nec congue neque bibendum a. Pellentesque ligula dui, interdum eget tempus nec, mattis at sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque convallis metus nec sapien vulputate tempor. Donec ornare eros a mi porta, lacinia aliquet neque gravida. In condimentum tincidunt ipsum, feugiat auctor massa pretium ut. Sed non massa nec neque laoreet tristique sollicitudin at tellus. Ut interdum id mauris vel auctor. Proin in aliquet risus.
+
+        Cras ut lacus eget orci pharetra mattis ut vitae sapien. Cras et feugiat arcu. Ut quis condimentum libero, sed euismod orci. Vestibulum molestie gravida tristique. Mauris fermentum neque ac sem egestas luctus. Quisque ornare tortor aliquet, accumsan massa eu, gravida nisl. Mauris ac fringilla tellus. Donec sed adipiscing felis, eget malesuada urna. Ut nec ipsum orci.
+
+        Nulla ultricies molestie nisi, et porttitor sapien feugiat quis. Mauris non lacinia massa. Curabitur vel odio quis nulla convallis faucibus eu id magna. Pellentesque non ullamcorper dui. Donec nec pharetra lorem, non suscipit ligula. Nam pharetra pharetra nulla, quis sodales risus luctus in. Vivamus at ullamcorper lectus, vitae tincidunt mi. Fusce eget ligula eget enim egestas feugiat. Integer nec congue nibh. Nulla in scelerisque felis. Vivamus ac justo orci. Praesent elementum blandit lectus, non bibendum nibh lobortis elementum. Nulla cursus lectus id est condimentum pharetra. Curabitur viverra, nulla vitae interdum semper, sem nunc pretium sapien, ac pulvinar urna tellus ac felis.
+
+        Aliquam venenatis placerat adipiscing. Nunc ut dapibus augue, sit amet facilisis mauris. Fusce laoreet auctor nibh sed pretium. Aenean mi orci, lobortis quis cursus non, iaculis quis lorem. Integer lacinia sollicitudin pharetra. Nunc et neque vulputate, auctor elit a, euismod magna. Maecenas consequat massa facilisis, suscipit magna ac, cursus urna. Ut at lacinia leo. Etiam tempor, orci at sollicitudin sodales, ante augue dictum nibh, et dictum enim erat at neque. Donec non ligula ac leo hendrerit interdum id eu lorem. Proin vitae bibendum dolor. Donec tincidunt ligula augue, in molestie urna aliquam vitae.
+    </div>
+
+</body>
+</html>
+<script>
+    myBlurFunction = function(state) {
+        /* state can be 1 or 0 */
+        var containerElement = document.getElementById('main_container');
+        var overlayEle = document.getElementById('overlay');
+
+        if (state) {
+            overlayEle.style.display = 'block';
+            containerElement.setAttribute('class', 'blur');
+        } else {
+            overlayEle.style.display = 'none';
+            containerElement.setAttribute('class', null);
+        }
+    };
+</script>

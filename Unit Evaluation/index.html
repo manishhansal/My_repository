@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>Landing Page</title>
+</head>
+<body>
+    
+    <div id="header"></div>
+    <h1>HOME PAGE</h1>
+    <div id="container"></div>
+
+</body>
+</html>
+<script type="module" src="./index.js"></script>
+<script>
+
+    let bank = JSON.parse(localStorage.getItem("bank"));
+
+    if(bank===null){
+
+        localStorage.setItem("bank", JSON.stringify([]));
+
+        async function peopleData(){
+            try {
+                let res = await fetch(`https://swapi.dev/api/people/`);
+                let data = await res.json();
+                console.log(data);
+                data.results.forEach(element => {
+                    console.log(element.name);
+
+                    let  again = JSON.parse(localStorage.getItem("bank"));
+                
+                    let obj = {};
+                    obj.name = element.name;
+                    obj.height = element.height;
+                    obj.mass = element.mass;
+                    obj.hairColor = element.hair_color;
+                    obj.skinColor = element.skin_color;
+            
+                    // console.log(again)
+                    again.push(obj);
+
+                    let store = localStorage.setItem("bank", JSON.stringify(again));
+
+                });
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        peopleData();
+    }
+
+    function display() {
+
+        let data = JSON.parse(localStorage.getItem("store"));
+        let container = document.getElementById("container");
+        data.forEach(element => {
+
+            let div = document.createElement("div");
+
+            let name = document.createElement("h3");
+            name.textContent = `Name : ${element.name}`;
+
+            let height = document.createElement("h3");
+            height.textContent = `Height : ${element.height}`;
+
+            let mass = document.createElement("h3");
+            mass.textContent = `Mass : ${element.mass}`;
+
+            let hair = document.createElement("h3");
+            hair.textContent = `Hair Color : ${element.hairColor}`;
+
+            let skin = document.createElement("h3");
+            skin.textContent = `Skin Color : ${element.hairColor}`
+
+            div.append(name, height, mass, hair, skin);
+            container.append(div);
+
+        });
+    }
+
+    display();
+
+
+
+
+</script>
+
+<!-- name: 'Luke Skywalker', height: '172', mass: '77', hair_color: 'blond', skin_color: 'fair',  -->
